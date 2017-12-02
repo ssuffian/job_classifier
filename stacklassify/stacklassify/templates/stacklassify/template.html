@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Job Score</title>
+</head>
+<body>
+    <div>
+      <button id="yes" type="button">Yes</button>
+      <button id="no" type="button">No</button>
+      <div>
+          <p>If no, why?</p>
+          {% for value,text in checkboxes %}
+              <input type="checkbox" value="{{ value }}">{{ text }}</input><br>
+          {% endfor %}
+          <p>Which part causes you to click no?</p>
+          <input type="radio" name="location_no" value="title">Title</input><br>
+          <input type="radio" name="location_no" value="category">Category</input><br>
+          <input type="radio" name="location_no" value="description">Description</input><br>
+      </div>
+    </div>
+    <div>
+        <h1>{{ title }} {{ location}}</h1>
+        <h3>{{ category }}</h3>
+        {% autoescape off %}<div>{{ description }}</div>{% endautoescape %}
+    </div>
+</body>
+
+{% block javascript %}
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+    $("#yes").click(function () {
+        $.ajax({
+        url: 'yes',
+        data: {
+          'guid': {{ guid }}
+        },
+        dataType: 'json',
+        success: function (data) {
+          window.location='/stack';
+        }
+      });
+    })
+    $("#no").click(function () {
+        $.ajax({
+        url: 'no',
+        data: {
+          'guid': {{ guid }}
+        },
+        dataType: 'json',
+        success: function (data) {
+          window.location='/stack';
+        }
+      });
+    })
+
+  </script>
+{% endblock %}
+</html>
+
+

@@ -1,0 +1,24 @@
+{"checkboxes": 
+    [
+        {
+            "id": "1",
+            "value": "experience",
+            "text": "I'm not qualified professionally."
+        },
+        {
+            "id": "2",
+            "value": "field",
+            "text": "This isn't my field of expertise."
+        },
+        {
+            "id": "3",
+            "value": "company_values",
+            "text": "The company is evil"
+        },
+        {
+            "id": "4",
+            "value": "invalid",
+            "text": "Wrong language/not valid job."
+        }
+    ]
+}
